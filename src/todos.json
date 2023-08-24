@@ -8,5 +8,10 @@
         "id": 1560865205318,
         "text": "Do 15 min exercise",
         "completed": false
+    },
+    {
+        "id": 1560865205319,
+        "text": "Do 20 min exercise",
+        "completed": false
     }
 ]
