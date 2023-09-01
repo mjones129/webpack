@@ -107,5 +107,5 @@ h1 {
 }
 
 .todolist-wrapper .todo-list li:hover .delete {
-    visibility: visible;
+    /* visibility: visible; */
 }
