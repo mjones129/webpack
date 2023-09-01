@@ -23,8 +23,7 @@ const config = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'src/template.html'
-        })
-    ]
+        }),
 }
 
 module.exports = config

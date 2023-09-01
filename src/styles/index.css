@@ -8,9 +8,7 @@ html, body {
     font: 18px 'Helvetica Neue', Helvetica, Arial;
     background-color: #f5f5f5;
     color: #4d4d4d;
-    font-weight: 300;
-
-    
+    font-weight: 300;    
 }
 
 .header-image {
@@ -107,5 +105,5 @@ h1 {
 }
 
 .todolist-wrapper .todo-list li:hover .delete {
-    /* visibility: visible; */
+    visibility: visible;
 }

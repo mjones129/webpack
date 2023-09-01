@@ -27,3 +27,5 @@ export function getTodoId(element) {
         || element.parentNode.parentNode.dataset.id
     , 10)
 }
+
+console.log('Hello world')
