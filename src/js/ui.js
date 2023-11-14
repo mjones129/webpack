@@ -11,7 +11,7 @@ export function renderTodos(todos) {
                     <input class="real-checkbox" type="checkbox" ${completionClass} />
                 </span>
                 <label>${todo.text}</label>
-                <span class="delete"><img src="images.delete.png"></span>
+                <span class="delete"><img class="delete" src="../images/delete.png" /></span>
             </li>
         `
     })
