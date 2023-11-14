@@ -1,6 +1,7 @@
 const common = require('./webpack.common.config');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 
 module.exports = merge(common, {
@@ -8,6 +9,22 @@ module.exports = merge(common, {
         filename: 'js/[name].[contenthash:12].js',
     },
     mode: 'production',
+    optimization: {
+        minimize: true,
+        minimizer: [
+            '...', //keep existing minimizers
+            new CssMinimizerPlugin({
+                minimizerOptions: {
+                    preset: [
+                        'default',
+                        {
+                            discardComments: {removeAll: true}
+                        }
+                    ]
+                }
+            })
+        ]
+    },
     module: {
         rules: [
             {
