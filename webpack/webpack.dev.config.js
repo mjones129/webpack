@@ -10,7 +10,8 @@ module.exports = merge(common, {
     devServer: {
         port: 9000,
         static: {
-            directory: path.resolve(__dirname, '../dist')
+            directory: path.resolve(__dirname, '../dist'),
+            directory: path.resolve(__dirname, '../images')
         },
         devMiddleware: {
             index: 'index.html',
