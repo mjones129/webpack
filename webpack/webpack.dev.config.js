@@ -2,7 +2,6 @@ const common = require('./webpack.common.config');
 const { merge } = require('webpack-merge');
 const path = require('path');
 
-
 module.exports = merge(common, {
     output: {
         filename: 'bundle.js',
@@ -50,7 +49,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     }

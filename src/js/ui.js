@@ -32,10 +32,14 @@ export function getTodoId(element) {
 }
 
 function showNotification() {
-    const notification = `<div class="${styles.notification}">Todo Item Added</div>`
-    document.body.innerHTML += notification
+    const notificationElement = document.createElement('div');
+    notificationElement.classList.add('alert', 'alert-success', 'position-absolute', 'bottom-0', styles.notification);
+    notificationElement.setAttribute('role', 'alert');
+    notificationElement.innerHTML = 'New Todo list item added.';
+    document.body.appendChild(notificationElement);
+
     setTimeout(function () {
         const notificationElement = document.querySelector(`.${styles.notification}`)
         notificationElement.parentNode.removeChild(notificationElement)
-    }, 2000)
+    }, 112000)
 }
