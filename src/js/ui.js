@@ -1,5 +1,6 @@
 import styles from '../styles/notification.module.css'
-
+import CheckmarkImage from '../../images/checkmark.svg';
+import DeleteImage from '../../images/delete.png';
 export function renderTodos(todos) {
     const renderedItemArray = todos.map(function (todo) {
         const className = todo.completed ? 'completed' : ''
@@ -7,11 +8,11 @@ export function renderTodos(todos) {
         return `
             <li data-id="${todo.id}" class="${className}">
                 <span class="custom-checkbox">
-                    <img class="check" src="../images/checkmark.svg" width="22" height="22"></img>
+                    <img class="check" src="${CheckmarkImage}" width="22" height="22"></img>
                     <input class="real-checkbox" type="checkbox" ${completionClass} />
                 </span>
                 <label>${todo.text}</label>
-                <span class="delete"><img class="delete" src="../images/delete.png" /></span>
+                <span class="delete"><img class="delete" src="${DeleteImage}" /></span>
             </li>
         `
     })
@@ -33,13 +34,13 @@ export function getTodoId(element) {
 
 function showNotification() {
     const notificationElement = document.createElement('div');
-    notificationElement.classList.add('alert', 'alert-success', styles.notification);
+    notificationElement.classList.add('alert', 'alert-success', 'position-absolute', 'bottom-0', styles.notification);
     notificationElement.setAttribute('role', 'alert');
-    notificationElement.innerHTML = 'Todo item added.';
+    notificationElement.innerHTML = 'New Todo list item added.';
     document.body.appendChild(notificationElement);
 
     setTimeout(function () {
         const notificationElement = document.querySelector(`.${styles.notification}`)
         notificationElement.parentNode.removeChild(notificationElement)
-    }, 2000)
+    }, 112000)
 }

@@ -2,7 +2,6 @@ const common = require('./webpack.common.config');
 const { merge } = require('webpack-merge');
 const path = require('path');
 
-
 module.exports = merge(common, {
     output: {
         filename: 'bundle.js',
@@ -52,6 +51,18 @@ module.exports = merge(common, {
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.(jpg|svg|png)$/,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition:{
+                        maxSize: 10 * 1024,
+                    }
+                },
+                generator: {
+                    filename: './images/[name].[ext]'
+                }
             }
         ]
     }
