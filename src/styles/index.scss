@@ -111,3 +111,20 @@ h1 {
         }
     }
 }
+
+.pics-container {
+    display: flex;
+    justify-content: center;
+
+    .pics {
+        display: flex;
+        gap: 50px;
+        margin: 200px auto;
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+        }
+    }
+}

@@ -1,6 +1,8 @@
 import styles from '../styles/notification.module.css'
 import CheckmarkImage from '../../images/checkmark.svg';
 import DeleteImage from '../../images/delete.png';
+import { getPics } from './api';
+
 export function renderTodos(todos) {
     const renderedItemArray = todos.map(function (todo) {
         const className = todo.completed ? 'completed' : ''
@@ -16,7 +18,9 @@ export function renderTodos(todos) {
             </li>
         `
     })
-    document.querySelector('.todo-list').innerHTML = renderedItemArray.join('')
+    document.querySelector('.todo-list').innerHTML = renderedItemArray.join('');
+
+    renderPics();
 }
 
 export function clearNewTodoInput() {
@@ -43,4 +47,21 @@ function showNotification() {
         const notificationElement = document.querySelector(`.${styles.notification}`)
         notificationElement.parentNode.removeChild(notificationElement)
     }, 112000)
+}
+
+function renderPics() {
+    getPics()
+        .then(pictures => {
+            const picsHTML = `
+            <div class="pics">
+                ${pictures.map(picture => {
+                    return '<img class="header-image" src="' + picture + '"alt="whatever" />';
+                }).join('')}
+                </div>
+            `;
+            const picsContainer = document.querySelector(
+                '.pics-container'
+            );
+            picsContainer.innerHTML = picsHTML;
+        });
 }
