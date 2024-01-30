@@ -16,17 +16,14 @@ module.exports = merge(common, {
   optimization: {
     minimize: true,
     splitChunks: {
-         cacheGroups: {
-         jquery: {
-         test: /[\\/]node_modules[\\/]jquery[\\/]/,
-          chunks: 'initial',
-          name: 'jquery'
-        },
-          bootstrap: {
-          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
-          chunks: 'initial',
-          name: 'bootstrap'
-        }
+      chunks: 'all',
+      maxSize: 140000,
+      minSize: 50000,
+      name(module, chunks, cacheGroupKey) {
+        const filePathAsArray = module
+        .identifier()
+        .split('/')
+        return filePathAsArray[filePathAsArray.length - 1]
       }
     },
     minimizer: [
