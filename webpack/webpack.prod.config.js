@@ -15,6 +15,20 @@ module.exports = merge(common, {
   devtool: "source-map",
   optimization: {
     minimize: true,
+    splitChunks: {
+         cacheGroups: {
+         jquery: {
+         test: /[\\/]node_modules[\\/]jquery[\\/]/,
+          chunks: 'initial',
+          name: 'jquery'
+        },
+          bootstrap: {
+          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
+          chunks: 'initial',
+          name: 'bootstrap'
+        }
+      }
+    },
     minimizer: [
       "...", //keep existing minimizers
       new CssMinimizerPlugin({
@@ -66,6 +80,7 @@ module.exports = merge(common, {
             ],
           },
         },
+        
         generator: [
           {
             type: "asset",
