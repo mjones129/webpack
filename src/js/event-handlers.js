@@ -16,8 +16,8 @@ export function newTodoEventHandler(event) {
     clearNewTodoInput()
 }
 
-export function removeTodoEventHandler(event) {
-  Promise.all([
+export async function removeTodoEventHandler(event) {
+  const [{Modal}, {default: $}] = await Promise.all([
     import (
       'bootstrap'
       /* webpackChunkName: "bootstrap" */
@@ -27,19 +27,16 @@ export function removeTodoEventHandler(event) {
       /* webpackChunkName: "jquery" */
     )
   ])
-
-  .then(function([{Modal}, {default: $}]) {
     const id = getTodoId(event.target);
       $('#modal-delete-button').data('todo-id', id)
       const deleteTodoModal = Modal.getOrCreateInstance(
         document.getElementById('modal-delete-todo')
       )    
       deleteTodoModal.show()
-    })
 }
 
-export function confirmRemoveEventHandler(event) {
-  Promise.all([
+export async function confirmRemoveEventHandler(event) {
+  const [{Modal}, {default: $}] = await Promise.all([
     import (
    'bootstrap'
       /* webpackChunkName: "bootstrap" */
@@ -49,7 +46,6 @@ export function confirmRemoveEventHandler(event) {
       /* webpackChunkName: "jquery" */
     )
   ])
-  .then(function([{Modal}, {default: $}]) {
     const id = $('#modal-delete-button').data('todo-id') 
     removeTodo(id)
     renderTodos(getAllTodos())
@@ -57,8 +53,8 @@ export function confirmRemoveEventHandler(event) {
       document.getElementById('modal-delete-todo')
     )
     deleteTodoModal.hide();
-    })
 }
+
 export function toggleTodoEventListener(event) {
     const id = getTodoId(event.target)
     const isCompleted = event.target.checked
