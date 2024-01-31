@@ -19,9 +19,8 @@ export function renderTodos(todos) {
         `
     })
     document.querySelector('.todo-list').innerHTML = renderedItemArray.join('');
-
-    renderPics();
 }
+
 
 export function clearNewTodoInput() {
     document.querySelector('.new-todo').value = ''
@@ -65,3 +64,6 @@ function renderPics() {
             picsContainer.innerHTML = picsHTML;
         });
 }
+
+
+renderPics();

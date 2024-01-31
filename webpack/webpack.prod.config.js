@@ -20,11 +20,6 @@ module.exports = merge(common, {
       maxSize: Infinity,
       minSize: 2000,
       cacheGroups: {
-        jquery: {
-          test:/[\\/]node_modules[\\/]jquery[\\/]/,
-          name: 'jquery',
-          priority: 2
-        },
         node_modules: {
           test:/[\\/]node_modules[\\/]/,
           name: 'node_modules',
