@@ -18,15 +18,23 @@ module.exports = merge(common, {
     splitChunks: {
       chunks: 'all',
       maxSize: Infinity,
-      minSize: 0,
+      minSize: 2000,
       cacheGroups: {
+        jquery: {
+          test:/[\\/]node_modules[\\/]jquery[\\/]/,
+          name: 'jquery',
+          priority: 2
+        },
         node_modules: {
+          test:/[\\/]node_modules[\\/]/,
+          name: 'node_modules',
+          chunks: 'initial'
+        },
+        async: {
           test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-            )[1]
-            return packageName
+          chunks: 'async',
+          name(module, chunks) {
+            return chunks.map(chunk => chunk.name).join('-')
           }
         }
       }
