@@ -8,6 +8,7 @@ const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = merge(common, {
+  entry: './src/js/index.js',
   output: {
     filename: "js/[name].[contenthash:12].js",
     publicPath: '/static/'

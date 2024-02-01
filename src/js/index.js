@@ -2,6 +2,10 @@ import '../styles/vendors.scss';
 import '../styles/index.scss';
 import { onLoadEventHandler, newTodoEventHandler, removeTodoEventHandler, toggleTodoEventListener, confirmRemoveEventHandler } from "./event-handlers";
 
+export function renderApp() {
+  onLoadEventHandler();
+}
+
 window.addEventListener('load', onLoadEventHandler)
 document.addEventListener('change', function (event) {
     if (event.target.classList.contains('new-todo')) {

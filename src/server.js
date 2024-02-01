@@ -12,6 +12,9 @@ if (process.env.NODE_ENV === 'dev') {
   app.use(
     webpackDevMiddleware(webpackCompiler, configuration.devServer.devMiddleware)
   )
+
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  app.use(webpackHotMiddleware(webpackCompiler));
 }
 
 app.get('/', function(req, res) {
